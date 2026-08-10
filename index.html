@@ -1,79 +1,74 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Retro Digital Cable Guide</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EyePTV Digital Cable</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="scanlines"></div>
-
-  <header class="topbar">
-    <div class="brand">SKYLINE DIGITAL CABLE</div>
-    <div id="clock">SUN 11:04 PM</div>
+<div id="app">
+  <header class="bar">
+    <div class="logo"><span class="eye">◉</span> EyePTV</div>
+    <div class="provider">DIGITAL CABLE</div>
+    <div id="clock"></div>
   </header>
 
-  <main>
-    <section class="statusbar">
-      <span id="status">Loading channels…</span>
-      <span id="count"></span>
+  <div class="main">
+    <section class="guide-pane">
+      <div class="guide-title">TV GUIDE</div>
+      <div class="daybar">
+        <button id="prevDay">◀</button>
+        <span id="dayLabel"></span>
+        <button id="nextDay">▶</button>
+      </div>
+      <div class="grid-wrap">
+        <div id="guide"></div>
+      </div>
     </section>
 
-    <section class="guide">
-      <div class="guide-head">
-        <div class="channel-head">CHANNEL</div>
-        <div class="time-head" id="timeHead"></div>
+    <aside class="preview-pane">
+      <div class="preview-screen">
+        <video id="video" playsinline muted></video>
+        <div id="previewPlaceholder">EYEPTV<br><small>SELECT A PROGRAM</small></div>
+        <div id="previewBanner"></div>
       </div>
-      <div id="guideRows"></div>
-    </section>
-
-    <section class="player-panel">
-      <div class="player">
-        <video id="video" controls playsinline></video>
-        <div id="videoMessage" class="video-message">SELECT A CHANNEL TO WATCH</div>
-      </div>
-      <div class="info">
-        <div id="nowChannel" class="info-channel">000  NO CHANNEL</div>
-        <div id="nowTitle" class="info-title">Welcome to Skyline Digital Cable</div>
-        <div id="nowDesc" class="info-desc">
-          Use the guide above to browse channels. Press the WATCH button to tune the channel.
+      <div class="channel-card">
+        <div id="channelNo">000</div>
+        <div>
+          <div id="channelName">NO CHANNEL SELECTED</div>
+          <div id="programName">Select a program from the guide</div>
         </div>
-        <button id="watchBtn">WATCH CHANNEL</button>
       </div>
-    </section>
-
-    <details class="settings">
-      <summary>SETUP / DATA SOURCES</summary>
-      <div class="settings-inner">
-        <label>M3U playlist URL
-          <input id="m3uUrl" value="https://iptv-org.github.io/iptv/index.m3u">
-        </label>
-        <label>XMLTV EPG URL
-          <input id="epgUrl" value="https://iptv-org.github.io/epg/guides/us.xml">
-        </label>
-        <label>Channel limit
-          <input id="limit" type="number" min="1" max="5000" value="120">
-        </label>
-        <div class="buttons">
-          <button id="loadBtn">LOAD GUIDE</button>
-          <button id="demoBtn">DEMO CHANNELS</button>
-        </div>
-        <p class="small">
-          GitHub Pages can host this app, but actual stream playback depends on the
-          stream provider allowing browser/CORS access. Some IPTV streams will work
-          while others will not.
-        </p>
+      <button id="watch">WATCH FULL SCREEN</button>
+      <div class="help">
+        <b>SELECT</b> Program &nbsp; <b>OK</b> Tune &nbsp; <b>GUIDE</b> Return to Guide<br>
+        <b>▲▼</b> Channel &nbsp; <b>◀▶</b> Browse Programs
       </div>
-    </details>
-  </main>
+    </aside>
+  </div>
 
-  <footer>
-    <span>▲▼ CHANNEL &nbsp; ◀▶ BROWSE &nbsp; ENTER SELECT</span>
-    <span>© SKYLINE DIGITAL CABLE</span>
-  </footer>
+  <div class="bottom-bar">
+    <span>INFO</span><span>OK SELECT</span><span>EXIT</span><span>GUIDE</span>
+    <span id="status">DEMO GUIDE</span>
+  </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
-  <script src="app.js"></script>
+<div id="fullscreen">
+  <video id="fullVideo" controls playsinline></video>
+  <div id="fullBlack"></div>
+  <div id="channelBanner">
+    <div class="bigNo" id="fullNo">000</div>
+    <div class="bannerText">
+      <div id="fullChannel">EyePTV</div>
+      <div id="fullProgram">Select a channel</div>
+      <div id="fullDesc"></div>
+    </div>
+  </div>
+  <div id="fullHint">PRESS GUIDE TO RETURN TO TV GUIDE</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
