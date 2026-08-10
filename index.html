@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Retro Digital Cable Guide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+
+  <header class="topbar">
+    <div class="brand">SKYLINE DIGITAL CABLE</div>
+    <div id="clock">SUN 11:04 PM</div>
+  </header>
+
+  <main>
+    <section class="statusbar">
+      <span id="status">Loading channels…</span>
+      <span id="count"></span>
+    </section>
+
+    <section class="guide">
+      <div class="guide-head">
+        <div class="channel-head">CHANNEL</div>
+        <div class="time-head" id="timeHead"></div>
+      </div>
+      <div id="guideRows"></div>
+    </section>
+
+    <section class="player-panel">
+      <div class="player">
+        <video id="video" controls playsinline></video>
+        <div id="videoMessage" class="video-message">SELECT A CHANNEL TO WATCH</div>
+      </div>
+      <div class="info">
+        <div id="nowChannel" class="info-channel">000  NO CHANNEL</div>
+        <div id="nowTitle" class="info-title">Welcome to Skyline Digital Cable</div>
+        <div id="nowDesc" class="info-desc">
+          Use the guide above to browse channels. Press the WATCH button to tune the channel.
+        </div>
+        <button id="watchBtn">WATCH CHANNEL</button>
+      </div>
+    </section>
+
+    <details class="settings">
+      <summary>SETUP / DATA SOURCES</summary>
+      <div class="settings-inner">
+        <label>M3U playlist URL
+          <input id="m3uUrl" value="https://iptv-org.github.io/iptv/index.m3u">
+        </label>
+        <label>XMLTV EPG URL
+          <input id="epgUrl" value="https://iptv-org.github.io/epg/guides/us.xml">
+        </label>
+        <label>Channel limit
+          <input id="limit" type="number" min="1" max="5000" value="120">
+        </label>
+        <div class="buttons">
+          <button id="loadBtn">LOAD GUIDE</button>
+          <button id="demoBtn">DEMO CHANNELS</button>
+        </div>
+        <p class="small">
+          GitHub Pages can host this app, but actual stream playback depends on the
+          stream provider allowing browser/CORS access. Some IPTV streams will work
+          while others will not.
+        </p>
+      </div>
+    </details>
+  </main>
+
+  <footer>
+    <span>▲▼ CHANNEL &nbsp; ◀▶ BROWSE &nbsp; ENTER SELECT</span>
+    <span>© SKYLINE DIGITAL CABLE</span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
